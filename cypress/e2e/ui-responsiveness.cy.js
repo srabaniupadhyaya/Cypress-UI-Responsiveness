@@ -10,9 +10,11 @@ describe('Test UI responsiveness', () => {
    ipadPresets.forEach((views=>
     {
       //cy.viewport(views) 
-      //cy.viewport(views, "portrait")
+      //cy.viewport(views, "portrait") fot orientation
       cy.viewport(views, "landscape")
       cy.visit('https://dribbble.com/')
+      //Assertion for responsiveness for mobile
+      cy.get('.nav-v2-search').should('not.have.attr',"placeholder")
     }
    ))
 
@@ -26,6 +28,9 @@ describe('Test UI responsiveness', () => {
     //cy.viewport('iphone-8')
       cy.viewport(views)
       cy.visit('https://dribbble.com/')
+      //Assertion for responsiveness for mobile
+      cy.get('.nav-v2-search').should('not.have.attr',"placeholder")
+
     }
   ))
 
