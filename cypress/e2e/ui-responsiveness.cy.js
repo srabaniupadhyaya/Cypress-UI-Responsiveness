@@ -1,17 +1,33 @@
 describe('Test UI responsiveness', () => {
+  const ipadPresets=['ipad-2','ipad-mini']
+  const mobilePresets=['iphone-3','iphone-4','iphone-5','samsung-s10']
 
   specify('Responsiveness on Ipad', () => {
      // Set viewport to 768px x 1024px
-    cy.viewport(768, 1024)
+   // cy.viewport(768, 1024)
     // Set viewport to presets
    // cy.viewport('ipad-2') 
-    cy.visit('https://dribbble.com/')
+   ipadPresets.forEach((views=>
+    {
+      //cy.viewport(views) 
+      //cy.viewport(views, "portrait")
+      cy.viewport(views, "landscape")
+      cy.visit('https://dribbble.com/')
+    }
+   ))
+
   })
 
   specify('Responsiveness on Mobile', () => {
+ 
+    mobilePresets.forEach((views=>
+    {
     // Set viewport to Iphone preset
-   cy.viewport('iphone-8')
-   cy.visit('https://dribbble.com/')
- })
+    //cy.viewport('iphone-8')
+      cy.viewport(views)
+      cy.visit('https://dribbble.com/')
+    }
+  ))
 
+})
 })
